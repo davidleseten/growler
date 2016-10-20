@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-var router = express.router();
+var router = express.Router();
 var Growl = require('../models/growl');
 
 router.get('/', function(req, res, next){
@@ -8,4 +8,4 @@ router.get('/', function(req, res, next){
 })
 
 
-module.eports = router;
+module.exports = router;

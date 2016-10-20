@@ -8,15 +8,13 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-
+var app = express();
 var routes = require('./routes/index');
 var users = require('./routes/users');
-const mongoose = require('mongoose');
-const cors = require('cors');
-var app = express();
-mongoose.connect(process.env.DB_CONN);
+var growls = require('./routes/growls');
 
 mongoose.connect(process.env.DB_CONN);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,12 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-<<<<<<< HEAD
 
-=======
->>>>>>> development
 app.use('/', routes);
 app.use('/users', users);
+app.use('/growls', growls);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
