@@ -9,6 +9,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 var app = express();
+
+var jwt = require('express-jwt');
+
+var jwtCheck = jwt({
+  secret: new Buffer(process.env.JWT_CS, 'base64'),
+  audience: process.env.JWT_CS
+});
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var growls = require('./routes/growls');
@@ -31,6 +38,7 @@ app.use(cors());
 
 app.use('/', routes);
 app.use('/users', users);
+//app.use('/growls', jwtCheck);
 app.use('/growls', growls);
 
 // catch 404 and forward to error handler
