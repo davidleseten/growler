@@ -14,7 +14,7 @@ function createGrowl(e) {
     }
   })
   .done(function (growl) {
-    console.log('running');
+    console.log('createGrowl');
     loadGrowl(growl);
   })
 
@@ -33,7 +33,21 @@ function loadGrowls() {
 }
 
 function loadGrowl(growl) {
-  var li = $('<li />');
-  li.text(growl.content);
+  console.log(growl);
+  var img = $('.growlImage');
+  img.attr('src', growl.posterIcon);
+  
+  var growlPost = $('.growlpost');
+  growlpost.text(growl.content);
+
+  var postTitle = $('.postTitle');
+  postTitle.text(growl.title);
+
+
+
+
+  growlpost.append(img);
+
+
   $('#growl-list').append(li);
 }
