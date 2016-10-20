@@ -11,8 +11,11 @@ const cors = require('cors');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+const mongoose = require('mongoose');
+const cors = require('cors');
 var app = express();
+mongoose.connect(process.env.DB_CONN);
+
 mongoose.connect(process.env.DB_CONN);
 
 // view engine setup
@@ -27,7 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 app.use('/', routes);
 app.use('/users', users);
 
